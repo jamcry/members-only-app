@@ -1,7 +1,14 @@
 <% provide(:title, "Signup") %>
 <h1>Be a Member Now!</h1>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3 center-form">
+    <%= render 'shared/error_messages' %>
     <%= render 'shared/form'%>
   </div>
+</div>
+
+<div class="row">
+<%= params %>
+<%= @user.errors.messages %>
 </div>

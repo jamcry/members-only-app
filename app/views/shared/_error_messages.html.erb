@@ -1,0 +1,9 @@
+<% if !@user.errors.empty? %>
+  <% messages = @user.errors.full_messages %>
+  <p>There are <%= pluralize(messages.length,'error') %> in the submitted form: </p>
+  <ul class="list-group small">
+    <% messages.each do |msg| %>
+      <li class="list-group-item list-group-item-danger"><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

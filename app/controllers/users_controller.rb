@@ -5,6 +5,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if @user.save
+      flash[:success] = "New account is created!"
+      redirect_to root_url
+    else
+      render 'new'
+    end
   end
 
   private
