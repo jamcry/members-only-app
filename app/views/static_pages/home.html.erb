@@ -1,4 +1,11 @@
 <% provide(:title, "Home") %>
 <h1>MembersOnly App</h1>
 <p>Home page of the app. This app is still in progress.</p>
-<button class="btn btn-primary">Sign Up!</button>
+<% if !logged_in? %>
+  <a href="<%= login_url %>" class="btn btn-primary">Login</a>
+  <a href="<%= signup_url %>" class="btn btn-secondary">Signup</a>
+<% else %>
+  <p>Nice to see you <%= current_user.name %>. Here will be the posts.</p>
+  <p>For now, just a random photo for you.</p>
+  <img src="https://picsum.photos/400/200?grayscale" alt="random photo" />
+<% end %>

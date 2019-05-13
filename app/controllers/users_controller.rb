@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    redirect_to root_url, notice: "You already have an account!" if logged_in?
     @user = User.new
   end
 
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "New account is created!"
+      log_in @user
       redirect_to root_url
     else
       render 'new'
