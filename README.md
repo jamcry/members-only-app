@@ -1,24 +1,42 @@
-# README
+# MembersOnly App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a members-only blogish app where guest can read all the posts, but
+they should be a logged in member to see the authors of those posts.
 
-Things you may want to cover:
+It is developed using Ruby on Rails.
+Also, the user authentication system is written from scratch.
 
-* Ruby version
+_This project is a part of
+[the Odin Project](https://www.theodinproject.com)'s curriculum._
 
-* System dependencies
+## Getting started
 
-* Configuration
+To get started with the app, clone the repo and then install the needed gems:
 
-* Database creation
+```
+$ bundle install --without production
+```
 
-* Database initialization
+Next, migrate the database:
 
-* How to run the test suite
+```
+$ rails db:migrate
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+If you want to load sample users and posts, use seeds:
 
-* Deployment instructions
+```
+$ rails db:seed
+```
 
-* ...
+Finally, run the test suite to verify that everything is working correctly:
+
+```
+$ rails test
+```
+
+If the test suite passes, you'll be ready to run the app in a local server:
+
+```
+$ rails server
+```
