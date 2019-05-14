@@ -14,7 +14,13 @@
         <%= f.label :password %>
         <%= f.password_field :password, class: "form-control" %>
       </div>
+      <div class="form-group row">
+        <div class="col-md-1"><%= f.check_box :remember %></div>
+        Remember Me
+      </div>
       <%= f.submit "Login", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
+
+<%= params %>
