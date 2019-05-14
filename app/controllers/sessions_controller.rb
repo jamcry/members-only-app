@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    if session[:id].nil?
+    if !logged_in?
       @user = User.new
     else
       flash[:info] = "You are already logged in!"
@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: login_params[:email])
     if @user && @user.authenticate(login_params[:password])
       log_in @user
+      remember @user if login_params[:remember] == '1'
       flash[:success] = "LOGGED IN"
       redirect_to root_url
     else
@@ -29,6 +30,6 @@ class SessionsController < ApplicationController
   private
 
       def login_params
-        params.require(:session).permit(:email, :password)
+        params.require(:session).permit(:email, :password, :remember)
       end
 end

@@ -1,10 +1,14 @@
 class User < ApplicationRecord
-  has_secure_token :remember_token
+  attr_reader :remember_token
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :name,     presence: true, uniqueness: true, length: { minimum: 3 }
   validates :email,    presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 6 }
   has_secure_password
+
+  def create_remember_token
+    @remember_token = User.new_token
+  end
 
   # Creates and returns the digest of the input
   def User.digest(input)
