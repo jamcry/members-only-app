@@ -25,10 +25,10 @@ class PostTest < ActiveSupport::TestCase
     assert_not @post.valid?
   end
 
-  test "body should be between 5-150 characters" do
+  test "body should be between 5-500 characters" do
     @post.body = "x" * 4
     assert_not @post.valid?
-    @post.body = "x" * 151
+    @post.body = "x" * 501
     assert_not @post.valid?
     @post.body = "This is a valid body."
     assert @post.valid?

@@ -1,0 +1,11 @@
+<% provide(:title, "Posts") %>
+<h1>Recent Posts</h1>
+<p>
+  <% if logged_in? %>
+    You are a member, so you can see who wrote what.
+  <% else %>
+    You are not a member, if you are, <a href="<%= login_url %>">log in</a>.
+    Otherwise, you won't be able to see the author of the posts.
+  <% end %>
+</p>
+<%= render 'posts' %>

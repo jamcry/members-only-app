@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, except: [:show]
+  before_action :require_login, except: [:show, :index]
 
   def new
     @post = Post.new
@@ -20,6 +20,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
   end
+  
+  def index
+    @posts = Post.all
+  end
 
   private
 
@@ -29,7 +33,6 @@ class PostsController < ApplicationController
 
       # Redirects to home page if user is not logged in
       def require_login
-        flash[:warning] = "You must be logged in for this action."
-        redirect_to root_url if !logged_in?
+        redirect_to root_url, notice: "You must be logged in for this action." if !logged_in?
       end
 end

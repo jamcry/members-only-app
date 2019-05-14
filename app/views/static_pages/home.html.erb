@@ -1,11 +1,16 @@
 <% provide(:title, "Home") %>
+<% provide(:posts, Post.all)%>
 <h1>MembersOnly App</h1>
 <p>Home page of the app. This app is still in progress.</p>
 <% if !logged_in? %>
-  <a href="<%= login_url %>" class="btn btn-primary">Login</a>
-  <a href="<%= signup_url %>" class="btn btn-secondary">Signup</a>
+  <p><strong> You can see the posts, but to see who wrote them: </strong></p>
+  <p>
+    <a href="<%= login_url %>" class="btn btn-primary">Login</a>
+    < or >
+    <a href="<%= signup_url %>" class="btn btn-secondary">Signup</a>
+  </p>
 <% else %>
-  <p>Nice to see you <%= current_user.name %>. Here will be the posts.</p>
-  <p>For now, just a random photo for you.</p>
-  <img src="https://picsum.photos/400/200?grayscale" alt="random photo" />
+  <p>Nice to see you <%= current_user.name %>.</p>
 <% end %>
+<h2>Recent Posts</h2>
+<%= render 'posts/posts' %>

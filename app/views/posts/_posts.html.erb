@@ -1,0 +1,15 @@
+<div class="card-columns">
+  <% @posts = Post.all %>
+  <% @posts.each do |post| %>
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><%= post.title %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= formatted_datetime(post.created_at) %></h6>
+        <p class="card-text">
+          <%= post.body[0..100] + "..." %>
+        </p>
+        <%= link_to "Read More -->", post , class: 'card-link' %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -7,5 +7,5 @@
 <% if logged_in? %>
   <%= @post.user.name %>
 <% else %>
-  Anonymous
+  <em class="text-black-50">(Anonymous)</em>
 <% end %>
