@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to root_url
     else
+      flash[:danger] = "Cannot create new user!"
       render 'new'
     end
   end

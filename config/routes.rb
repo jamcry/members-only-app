@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get  'logout', to: 'sessions#destroy'
   get  'signup', to: 'users#new'
   resources :users
-  
+  resources :posts
   root 'static_pages#home'
   get 'static_pages/home'
   get 'static_pages/help'

@@ -1,0 +1,11 @@
+<%= form_for @post do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: 'Post Title', class: 'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, placeholder: 'Your post here', class: 'form-control'%>
+  </div>
+  <%= f.submit "Create Post", class: "btn btn-primary" %>
+<% end %>
